@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages with {{ friend.first_name }} {{ friend.last_name }}</title>
+</head>
+
+<body>
+    <h1>Conversation with {{ friend.first_name }} {{ friend.last_name }}</h1>
+
+    <ul>
+        {% for message in messages %}
+        <li>
+            {{ message.content }} - {{ message.created_at }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Form to send a new message -->
+    <form action="/send_message/{{ friend_id }}" method="POST">
+        <textarea name="content" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <a href="/manage_friends">Back to Friends</a>
+</body>
+
+</html>

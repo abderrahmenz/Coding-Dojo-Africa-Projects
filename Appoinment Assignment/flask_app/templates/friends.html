@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends</title>
+    <style>
+        .profile-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .profile-card h3 {
+            margin: 0;
+        }
+
+        .profile-card p {
+            margin: 5px 0;
+        }
+
+        .profile-card form {
+            display: inline;
+        }
+
+        .profile-card button {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile-card button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Friends</h1>
+    <hr>
+    <h2>People You May Know</h2>
+    {% for user in non_friends %}
+    <div class="profile-card">
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        <p>Email: {{ user.email }}</p>
+        <form action="/add_friend/{{ user.id }}" method="POST">
+            <button type="submit">Add Friend</button>
+        </form>
+        
+    </div>
+    {% endfor %}
+
+    <hr>
+    <h2>Your Friends</h2>
+    <ul>
+        {% for friend in friends %}
+        <li>
+            {{ friend.first_name }} {{ friend.last_name }}
+            <!-- Message button -->
+             <br/>
+            <form action="/conversation/{{ friend.id }}" method="GET" style="display:inline;">
+                <button type="submit">Message</button>
+            </form>
+            <br/>
+            <form action="/delete_friend/{{ friend.id }}" method="POST">
+                <button type="submit">Delete Friend</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
