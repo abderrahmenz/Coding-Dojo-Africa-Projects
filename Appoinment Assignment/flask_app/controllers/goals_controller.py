@@ -1,74 +1,31 @@
 from flask_app import app
-from flask import redirect, render_template, request, session
+from flask import render_template, request, redirect, session, flash
 from flask_app.models.goal import Goal
 
-@app.route("/goals")
-def goals():
+# Route to display the goal setting form
+@app.route("/goalsettingnew")
+def goalsetting_new():
     if "user_id" not in session:
         return redirect("/")
     
-    data = {"user_id": session["user_id"]}
-    goals = Goal.get_all_by_user(data)
-    
-    return render_template("goals.html", goals=goals)
+    goal_type = request.args.get("goal_type")
+    return render_template("goalsettingnew.html", goal_type=goal_type)
 
-@app.route("/goals/new", methods=["POST"])
-def create_goal():
+# Route to handle form submission and save the goal
+@app.route("/save_goal", methods=["POST"])
+def save_goal():
     if "user_id" not in session:
         return redirect("/")
     
     data = {
         "user_id": session["user_id"],
         "goal_type": request.form["goal_type"],
-        "target": request.form.get("target"),
-        "duration_days": request.form.get("duration_days")
+        "target": request.form["target"],
+        "duration_days": request.form["duration_days"],
+        "start_date": request.form["start_date"],
+        "end_date": request.form["end_date"]
     }
 
-    Goal.create(data)
-
-    return redirect("/goalsetting")  # Ensure redirection back to goalsetting page
-
-@app.route("/goals/<int:id>")
-def show_goal(id):
-    if "user_id" not in session:
-        return redirect("/")
-    
-    goal = Goal.get_by_id({"id": id})
-    
-    return render_template("goal_detail.html", goal=goal)
-
-@app.route("/goals/<int:id>/edit")
-def edit_goal(id):
-    if "user_id" not in session:
-        return redirect("/")
-    
-    goal = Goal.get_by_id({"id": id})
-    
-    return render_template("edit_goal.html", goal=goal)
-
-@app.route("/goals/<int:id>/update", methods=["POST"])
-def update_goal(id):
-    if "user_id" not in session:
-        return redirect("/")
-    
-    data = {
-        "id": id,
-        "activity": request.form["activity"],
-        "steps": request.form.get("steps"),
-        "duration": request.form["duration"],
-        "daily_steps": request.form.get("daily_steps"),
-        "total_walks": request.form.get("total_walks")
-    }
-    
-    print("Updating goal with data:", data)
-    
-    Goal.update(data)
-    return redirect(f"/goals/{id}")
-
-@app.route("/goals/<int:id>/delete")
-def delete_goal(id):
-    if "user_id" not in session:
-        return redirect("/")
-    
-    Goal.delete({"id": id})
-    return redirect("/goals")
+    Goal.save(data)
+    flash("Goal saved successfully!")
+    return redirect("/goalsetting")
