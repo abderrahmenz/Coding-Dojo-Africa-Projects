@@ -1,42 +1,19 @@
 from flask_app import app
-from flask import render_template, request, redirect, session, flash
-from flask_app.models.progress import Progress
+from flask import redirect, render_template, session
+from flask_app.models.goal import Goal
 
-# Route to display the progress tracking page
 @app.route("/progress")
 def display_progress():
     if "user_id" not in session:
         return redirect("/")
     
-    user_id = session["user_id"]
-    progress_list = Progress.get_progress_by_user_id({"user_id": user_id})
+    data = {"user_id": session["user_id"]}
+    goal = Goal.get_goal_by_user_id(data)
     
-    # Debugging: Check if progress_list has data
-    print(progress_list)  # This will output the progress_list to the console
+    print(goal)  # Debugging: Check if goal is fetched correctly
     
-    return render_template("progress.html", progress_list=progress_list)
+    if goal:
+        print(f"Goal found: {goal.goal_type}, {goal.target}")  # More detailed debugging
+    
+    return render_template("progress.html", goal=goal)
 
-# Route to handle updating progress
-@app.route("/update_progress", methods=["POST"])
-def update_progress():
-    if "user_id" not in session:
-        return redirect("/")
-    
-    data = {
-        "user_id": session["user_id"],
-        "goal_id": request.form["goal_id"],
-        "steps_taken": request.form["steps_taken"],
-        "progress_date": request.form["progress_date"],
-        "daily_goal": request.form["daily_goal"],
-        "progress_percentage": request.form["progress_percentage"],
-        "completed": request.form["completed"]
-    }
-
-    # Use either `save` or `update` method based on your requirement
-    if request.form.get("is_new"):  # Assuming a hidden input field `is_new` to determine save or update
-        Progress.save(data)
-    else:
-        Progress.update(data)
-    
-    flash("Progress updated successfully!")
-    return redirect("/progress")
