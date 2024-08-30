@@ -1,0 +1,229 @@
+/* General Styles */
+body.light-mode {
+    background-color: #2c2f33;
+    color: #f8f9fa;
+    
+}
+
+body.dark-mode {
+    background-color: #f1f4f9;
+    color: #343a40;
+}
+
+/* Navbar Styles */
+.navbar.light-mode {
+    background: linear-gradient(135deg, #2c3e50, #4b79a1) !important; /* Dark gradient for dark mode */
+    color: #f8f9fa;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    
+}
+
+.navbar.dark-mode {
+    background: linear-gradient(135deg, #008080, #006666) !important; /* Teal gradient for light mode */
+    color: #f8f9fa;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+}
+
+.navbar .nav-link.light-mode {
+    
+    color: #f8f9fa !important; /* Light text color for links in dark mode */
+}
+
+.navbar .nav-link.dark-mode {
+    color: #f8f9fa !important; /* Light text color for links in light mode */
+}
+
+
+/* Profile Card Styles */
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+}
+
+.profile-card {
+    background-color: #3c4043;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 300px; /* Flexbox for consistent sizing */
+    max-width: 300px; /* Maximum width for the cards */
+    min-height: 200px; /* Minimum height for consistency */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.dark-mode .profile-card {
+    background-color: #ffffff;
+    
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff6f61;
+}
+
+.profile-card p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Button Styles */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: #fff;
+    border-radius: 20px;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #0069d9);
+    color: #fff;
+    border-radius: 20px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0069d9, #0056b3);
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: #fff;
+    border-radius: 20px;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    transform: scale(1.05);
+}
+
+/* Section Styles */
+.container {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.container h1, .container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #343a40;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+body.dark-mode hr {
+    background: #444;
+}
+
+/* 3D Title Effect */
+.navbar-brand h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 4px 4px 10px rgba(0, 0, 0, 0.2);
+    color: #111111; /* Adjust color to your preference */
+    transition: text-shadow 0.3s ease;
+}
+
+body.dark-mode .navbar-brand h1 {
+    color: #ffcccb;
+}
+
+/* Hover effect */
+.nav-link:hover {
+    color: #00bfff !important;
+    font-weight: bold;
+}
+
+/* Active page styling */
+.navbar .nav-link.active {
+    color: #FF8343 !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Additional Styles */
+ul.profile-list {
+    padding-left: 0;
+    list-style: none;
+}
+ /* Style 7
+   ----------------------------- */
+   .seven h1 {
+    text-align: center;
+        font-size:30px; font-weight:300; color:#222; letter-spacing:1px;
+        text-transform: uppercase;
+    
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 27px 0;
+        grid-gap: 20px;
+        align-items: center;
+    }
+    
+    .seven h1:after,.seven h1:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #c50000;
+        border-top: 1px solid #c50000;
+        height: 5px;
+      background-color:#f8f8f8;
+    }
+    header h5 {
+        font-size: 50px;
+        font-weight: 600;
+        background-image: linear-gradient(to left, #553c9a, #b393d3);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    .twelve h1 {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        width: 160px;
+        text-align: center;
+        margin: auto;
+        white-space: nowrap;
+        padding-bottom: 13px;
+    }
+    
+    .twelve h1:before, .twelve h1:after {
+        background-color: #c50000;
+        content: '';
+        display: block;
+        height: 3px;
+        width: 75px;
+    }
+      .twelve h1:after {
+          background-color: #c50000;
+          content: '';
+          display: block;
+        position:absolute; right:61.90em; bottom:0;
+          height: 3px;
+          width: 75px;
+          margin-bottom: 0.25em;
+      }
+    

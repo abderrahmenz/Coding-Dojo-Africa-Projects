@@ -1,0 +1,150 @@
+/* Light mode styles */
+body.light-mode {
+    
+    background: linear-gradient(to right, #343a40, #4a4a4a);
+    color: #f8f9fa;
+}
+/* Dark mode styles */
+body.dark-mode {
+    background: linear-gradient(to right, #f8f9fa, #e8f0f7);
+    color: #343a40;
+}
+
+.navbar.light-mode {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.navbar.light-mode .nav-link {
+    color: #343a40; /* Dark text color for links */
+}
+.navbar.dark-mode {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.navbar.dark-mode .nav-link {
+    color: #f8f9fa; /* Light text color for links */
+}
+
+/* Normal link color */
+.nav-link {
+    color: #343a40;
+}
+
+
+/* Hover effect */
+.nav-link:hover {
+    color: #00bfff !important; /* Change this color to your preferred hover color */
+}
+
+.navbar .nav-link.active {
+    color: #FF8343 !important;
+    font-weight: bold;
+}
+/* Header styles */
+header h5 {
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.twelve h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 160px;
+    text-align: center;
+    margin: auto;
+    white-space: nowrap;
+    padding-bottom: 13px;
+}
+
+.twelve h1:before, .twelve h1:after {
+    background-color: #c50000;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 75px;
+}
+  .twelve h1:after {
+      background-color: #c50000;
+      content: '';
+      display: block;
+    position:absolute; right:61.90em; bottom:0;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 0.25em;
+  }
+
+  /* Style 7
+   ----------------------------- */
+.seven h1 {
+    text-align: center;
+        font-size:30px; font-weight:300; color:#222; letter-spacing:1px;
+        text-transform: uppercase;
+    
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 27px 0;
+        grid-gap: 20px;
+        align-items: center;
+    }
+    
+    .seven h1:after,.seven h1:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #c50000;
+        border-top: 1px solid #c50000;
+        height: 5px;
+      background-color:#f8f8f8;
+    }
+    /* Goal Card Styling */
+    .goal-card {
+        background-color: #f0f2f5;
+        border-radius: 15px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .goal-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .goal-type {
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+    
+    .card-text {
+        font-size: 16px;
+        color: #343a40;
+    }
+    
+    .goal-type-background {
+        background: linear-gradient(145deg, #ffd700, #ffcc00);
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .goal-type-background:hover {
+        background: linear-gradient(145deg, #ffcc00, #ffbf00);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    }
+    

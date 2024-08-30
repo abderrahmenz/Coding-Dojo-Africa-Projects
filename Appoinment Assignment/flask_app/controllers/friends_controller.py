@@ -37,3 +37,11 @@ def delete_friend(friend_id):
     }
     Friend.delete_friend(data)
     return redirect("/manage_friends")
+@app.route('/conversation')
+def new_conversation():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    user_id = session['user_id']
+    friends = Friend.get_friends_by_user_id(user_id)
+    return render_template('conversation.html', friends=friends)

@@ -1,0 +1,119 @@
+/* Light mode styles */
+body.light-mode {
+    
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+body.dark-mode {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.navbar.light-mode {
+    background-color: #f8f9fa; /* Light mode navbar background */
+    color: #343a40; /* Dark text color */
+}
+
+.navbar.light-mode .nav-link {
+    color: #343a40; /* Dark text color for links */
+}
+
+.card {
+    border: 1px solid #e3e3e3;
+}
+
+/* Dark mode styles */
+
+
+.navbar.dark-mode {
+    background-color: #343a40; /* Dark mode navbar background */
+    color: #f8f9fa; /* Light text color */
+}
+
+.navbar.dark-mode .nav-link {
+    color: #f8f9fa; /* Light text color for links */
+}
+
+.card {
+    border: 2px solid #ffffff;
+}
+
+.card-img-top {
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+    width: 100%; /* Ensures the image takes up the full width of the card */
+}
+
+/* Navbar link color */
+.nav-link {
+    color: #343a40; /* Dark text color for normal state */
+}
+
+/* Hover effect */
+.nav-link:hover {
+    color: #00bfff !important; /* Change this color to your preferred hover color */
+}
+
+/* Active page styling */
+.navbar .nav-link.active {
+    color: #FF8343 !important; /* Active page color */
+    font-weight: bold; /* Active page font weight */
+}
+header h5 {
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.twelve h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 160px;
+    text-align: center;
+    margin: auto;
+    white-space: nowrap;
+    padding-bottom: 13px;
+}
+
+.twelve h1:before, .twelve h1:after {
+    background-color: #c50000;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 75px;
+}
+  .twelve h1:after {
+      background-color: #c50000;
+      content: '';
+      display: block;
+    position:absolute; right:61.90em; bottom:0;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 0.25em;
+  }
+
+  /* Style 7
+   ----------------------------- */
+.seven h1 {
+    text-align: center;
+        font-size:30px; font-weight:300; color:#222; letter-spacing:1px;
+        text-transform: uppercase;
+    
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 27px 0;
+        grid-gap: 20px;
+        align-items: center;
+    }
+    
+    .seven h1:after,.seven h1:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #c50000;
+        border-top: 1px solid #c50000;
+        height: 5px;
+      background-color:#f8f8f8;
+    }

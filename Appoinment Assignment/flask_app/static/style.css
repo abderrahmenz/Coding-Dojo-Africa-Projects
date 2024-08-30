@@ -1,126 +1,239 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* General Styles */
+body.light-mode {
+    background-color: #f8f9fa; /* Light background */
+    color: #343a40; /* Dark text color */
 }
 
-header {
-    width: 100%;
+body.dark-mode {
+    background-color: #343a40; /* Dark background */
+    color: #f8f9fa; /* Light text color */
+}
+
+header.light-mode {
+    background-color: #f8f9fa; /* Light header background */
+    color: #343a40; /* Dark header text color */
+}
+
+header.dark-mode {
+    background-color: #343a40; /* Dark header background */
+    color: #f8f9fa; /* Light header text color */
+}
+
+/* Card Styles */
+.card.light-mode {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Light card gradient */
+    box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff; /* Light card shadow */
+}
+
+.card.dark-mode {
+    background: linear-gradient(145deg, #2c2c2c, #1f1f1f); /* Dark card gradient */
+    box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #2e2e2e; /* Dark card shadow */
+}
+
+/* Button Styles */
+.btn.light-mode {
+    background-color: #007bff; /* Light mode button background */
+    color: #fff; /* Light mode button text color */
+    border: none; /* No border */
+}
+
+.btn.dark-mode {
+    background-color: #6c757d; /* Dark mode button background */
+    color: #f8f9fa; /* Dark mode button text color */
+    border: none; /* No border */
+}
+
+.btn-outline-light-mode {
+    background-color: transparent; /* Transparent background */
+    color: #343a40; /* Dark text color */
+    border: 1px solid #343a40; /* Dark border */
+}
+
+.btn-outline-dark-mode {
+    background-color: transparent; /* Transparent background */
+    color: #f8f9fa; /* Light text color */
+    border: 1px solid #f8f9fa; /* Light border */
+}
+
+/* Form Styles */
+input.light-mode, select.light-mode, textarea.light-mode {
+    background-color: #fff; /* Light mode input background */
+    color: #343a40; /* Dark text color */
+    border: 1px solid #ced4da; /* Light border */
+}
+
+input.dark-mode, select.dark-mode, textarea.dark-mode {
+    background-color: #495057; /* Dark mode input background */
+    color: #f8f9fa; /* Light text color */
+    border: 1px solid #343a40; /* Dark border */
+}
+
+/* Navbar Styles */
+.navbar.light-mode {
     background-color: #f8f9fa;
+    color: #343a40;
+  }
+  
+  .navbar.light-mode .nav-link {
+    color: #343a40; /* Dark text color for links */
+  }
+  .navbar.dark-mode {
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+  
+  .navbar.dark-mode .nav-link {
+    color: #f8f9fa; /* Light text color for links */
+  }
+  
+  /* Normal link color */
+  .nav-link {
+    color: #343a40;
+  }
+  
+  
+  /* Hover effect */
+  .nav-link:hover {
+    color: #00bfff !important; /* Change this color to your preferred hover color */
+  }
+/* Footer Styles */
+footer.light-mode {
+    background-color: #f8f9fa; /* Light mode footer background */
+    color: #343a40; /* Dark text color */
+}
+
+footer.dark-mode {
+    background-color: #343a40; /* Dark mode footer background */
+    color: #f8f9fa; /* Light text color */
+}
+
+/* Table Styles */
+.table.light-mode {
+    background-color: #fff; /* Light mode table background */
+    color: #343a40; /* Dark text color */
+    border: 1px solid #dee2e6; /* Light border */
+}
+
+.table.dark-mode {
+    background-color: #495057; /* Dark mode table background */
+    color: #f8f9fa; /* Light text color */
+    border: 1px solid #343a40; /* Dark border */
+}
+
+.table th.light-mode, .table td.light-mode {
+    background-color: #e9ecef; /* Light mode table header/cell background */
+    color: #343a40; /* Dark text color */
+}
+
+.table th.dark-mode, .table td.dark-mode {
+    background-color: #6c757d; /* Dark mode table header/cell background */
+    color: #f8f9fa; /* Light text color */
+}
+
+/* Links Styles */
+a.light-mode {
+    color: #007bff; /* Light mode link color */
+}
+
+a.dark-mode {
+    color: #adb5bd; /* Dark mode link color */
+}
+
+a.light-mode:hover, a.light-mode:focus {
+    color: #0056b3; /* Light mode link hover color */
+}
+
+a.dark-mode:hover, a.dark-mode:focus {
+    color: #ced4da; /* Dark mode link hover color */
+}
+
+/* Additional Custom Styles */
+.custom-style.light-mode {
+    /* Add any additional custom styles for light mode */
+}
+
+.custom-style.dark-mode {
+    /* Add any additional custom styles for dark mode */
+}
+/* Active page styling */
+.nav-link.active {
+    color: #FF8343 !important;
+    font-weight: bold;
+}
+
+/* Hover effect */
+.nav-link:hover {
+    color: #00bfff !important; /* Change this color to your preferred hover color */
+}
+
+/* Form Enhancements */
+input[type="text"], textarea {
+    border-radius: 10px;
+}
+
+.btn {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient buttons */
+    transition: background 0.3s ease-in-out; /* Smooth transition */
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #0056b3, #004494); /* Darker gradient on hover */
+}
+
+/* Card Header Enhancements */
+.card .card-title {
+    background-color: #00bfff;
+    color: #fff;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
 }
 
-header h1 {
-    margin: 0;
+.card-title.text-center {
+    background-color: #17a2b8; /* Distinct color for Q&A section */
 }
 
-.banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar input {
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 25px;
-}
-
-.search-bar button {
-    border-radius: 25px;
-}
-
-.container {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.main-section {
-    flex-grow: 1;
+/* Improved Spacing */
+.card-body {
     padding: 20px;
-    border-radius: 10px;
-    background-color: #f8f9fa;
 }
 
-.right-section {
-    flex-basis: 20%;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-}
-
-.post-section {
+.row > div {
     margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 10px;
+}
+header h5 {
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.twelve h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 160px;
+    text-align: center;
+    margin: auto;
+    white-space: nowrap;
+    padding-bottom: 13px;
 }
 
-.post-section input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.twelve h1:before, .twelve h1:after {
+    background-color: #c50000;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 75px;
 }
-
-.post-section button {
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-}
-
-.post {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #e9ecef;
-    border-radius: 10px;
-}
-
-.post img {
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.qna-section input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-
-.nav-link {
-    position: relative;
-}
-
-.nav-link.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 100%;
-    height: 2px;
-    background-color: blue;
-}
-/* .container-2 {
-    display: flex;
-    justify-content: space-between; 
+  .twelve h1:after {
+      background-color: #c50000;
+      content: '';
+      display: block;
+    position:absolute; right:61.90em; bottom:0;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 0.25em;
   }
-  .card-2 {
-    width: 40%; 
-    margin: 10px;
-  }
-  .card-img-2 {
-    width: 100%; 
-    height: auto; 
-  } */

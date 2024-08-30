@@ -4,16 +4,17 @@ from flask_app.models.post import Post
 
 
 
-@app.route("/dashboard")
+@app.route('/dashboard')
 def dashboard():
-    if "user_id" not in session:
-        return redirect("/")
-    
-    # Fetch all posts with user information
-    posts = Post.get_all_with_users()
-    
-    # Pass the posts to the template
-    return render_template("dashboard.html", posts=posts)
+    if 'user_id' not in session:
+        return redirect('/')
+
+    user = User.get_by_id({'id': session['user_id']})
+    posts = Post.get_all_with_comments()  # Assuming you have this method to get posts with comments
+    qnas = Qna.get_all()  # Assuming you have this method to get all Q&A
+
+    return render_template('dashboard.html', user=user, posts=posts, qnas=qnas)
+
 
 
 

@@ -22,6 +22,24 @@ class Goal:
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
+    def get_goals_by_user_id(cls, user_id):
+        query = """
+            SELECT goals.*, users.first_name AS username
+            FROM goals
+            JOIN users ON goals.user_id = users.id
+            WHERE goals.user_id = %(user_id)s;
+        """
+        data = {"user_id": user_id}
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        
+        goals = []
+        for row in results:
+            goal = cls(row)
+            goal.username = row['username']  # Add the username to the goal object
+            goals.append(goal)
+        
+        return goals
+    @classmethod
     def get_all(cls):
         query = "SELECT * FROM goals;"
         results = connectToMySQL(DATABASE).query_db(query)
@@ -57,4 +75,8 @@ class Goal:
                 start_date = %(start_date)s, end_date = %(end_date)s, updated_at = NOW()
             WHERE id = %(id)s;
         """
+        return connectToMySQL(DATABASE).query_db(query, data)
+    @classmethod
+    def delete_goal(cls, data):
+        query = "DELETE FROM goals WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)

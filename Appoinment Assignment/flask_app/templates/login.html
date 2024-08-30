@@ -4,84 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loginstyle.css') }}">
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h2 class="text-primary fw-bold">Registration</h2>
-                    </div>
-                    <div class="card-body">
-                        <form action="/register" method="post">
-                            {% with messages = get_flashed_messages(category_filter=["register"]) %}
-                            {% for message in messages %}
-                            <p class="text-danger">{{message}}</p>
-                            {% endfor %}
-                            {% endwith %}
-                            <div class="mb-3">
-                                <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirm_password" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirm_password"
-                                    name="confirm_password">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Register</button>
-                        </form>
-                    </div>
-                </div>
-                
+    <!-- Photo Grid -->
+    <div class="photo-grid">
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Basketball.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Yoga.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Cycling.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Running.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Ropes.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Gym.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Beach-Skate.jpg') }}');"></div>
+        <div class="photo" style="background-image: url('{{ url_for('static', filename='Rowing.jpg') }}');"></div>
+    </div>
+
+    <!-- Register Button -->
+    <a href="/register" class="btn btn-warning btn-lg register-button">Sign Up</a>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2 class="text-success fw-bold">Login</h2>
             </div>
-            <div class="col-md-5 mt-5 mt-md-0">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h2 class="text-success fw-bold">Login</h2>
+            <div class="card-body">
+                <form action="/login" method="post">
+                    {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                    {% for message in messages %}
+                    <p class="text-danger">{{message}}</p>
+                    {% endfor %}
+                    {% endwith %}
+                    <div class="mb-3">
+                        <label for="login_email" class="form-label">Email</label>
+                        <input type="email" class="form-control blurred-input" id="login_email" name="email">
                     </div>
-                    <div class="card-body">
-                        <form action="/login" method="post">
-                            {% with messages = get_flashed_messages(category_filter=["login"]) %}
-                            {% for message in messages %}
-                            <p class="text-danger">{{message}}</p>
-                            {% endfor %}
-                            {% endwith %}
-                            <div class="mb-3">
-                                <label for="login_email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="login_email" name="email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="login_password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="login_password" name="password">
-                            </div>
-                            <button type="submit" class="btn btn-success w-100">Login</button>
-                        </form>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">Password</label>
+                        <input type="password" class="form-control blurred-input" id="login_password" name="password">
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-success w-100">Login</button>
+                </form>
             </div>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz4fnFO9gybVuB02fW5Sb6B4o6p6c6Z4DlPYjxOcHdGela3T2vv13pPc8A"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                integrity="sha384-HoA6aHXRXz/2QZB56M2A/hJ6p7Lmu7VuuupkBuQk2k8TH4NShzC/NoRYnEoW9XrM"
-                crossorigin="anonymous"></script>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybVuB02fW5Sb6B4o6p6c6Z4DlPYjxOcHdGela3T2vv13pPc8A"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-HoA6aHXRXz/2QZB56M2A/hJ6p7Lmu7VuuupkBuQk2k8TH4NShzC/NoRYnEoW9XrM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

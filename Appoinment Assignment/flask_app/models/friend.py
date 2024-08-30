@@ -73,3 +73,14 @@ class Friend:
         if results:
             return cls(results[0])
         return None
+
+    @classmethod
+    def get_friends_by_user_id(cls, user_id):
+        query = "SELECT users.* FROM friends \
+                 JOIN users ON friends.friend_id = users.id \
+                 WHERE friends.user_id = %(user_id)s;"
+        results = connectToMySQL('your_database_name').query_db(query, {'user_id': user_id})
+        friends = []
+        for row in results:
+            friends.append(cls(row))
+        return friends

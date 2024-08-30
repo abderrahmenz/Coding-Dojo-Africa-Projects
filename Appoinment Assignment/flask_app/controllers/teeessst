@@ -1,0 +1,87 @@
+from flask import Flask, redirect, render_template, request, flash, session
+from flask_bcrypt import Bcrypt
+from flask_app.models.users import User
+from flask_app.models.post import Post
+
+app = Flask(__name__)
+app.secret_key = "abderrahmen"  
+bcrypt = Bcrypt(app)
+
+# * View Routes
+@app.route("/")
+def login():
+    return render_template("login.html")
+
+@app.route("/goalsetting")
+def goalsetting():
+    return render_template("goalsetting.html")
+
+@app.route("/progress")
+def progress():
+    return render_template("progress.html")
+
+
+@app.route("/plans")
+def plans():
+    return render_template("plans.html")
+
+@app.route("/friends")
+def friends():
+    if "user_id" not in session:
+        return redirect("/")
+    
+    data = {"id": session["user_id"]}
+    non_friends = User.get_non_friends(data)
+    
+    return render_template("friends.html", non_friends=non_friends)
+
+# * Action Routes
+@app.route("/register", methods=["POST"])
+def process_register():
+    if not User.validate_user(request.form):
+        return redirect("/")
+    
+    pw_hash = bcrypt.generate_password_hash(request.form["password"])
+    data = {**request.form, "password": pw_hash}
+    
+    # Create the user and store their ID in the session
+    user_id = User.create(data)
+    session["user_id"] = user_id
+    
+    return redirect("/dashboard")
+
+@app.route("/login", methods=["POST"])
+def process_login():
+    if not User.validate_login_user(request.form):
+        return redirect("/")
+    
+    data = {"email": request.form["email"]}
+    user_in_db = User.get_by_email(data)
+    
+    if not user_in_db or not bcrypt.check_password_hash(user_in_db.password, request.form["password"]):
+        flash("Invalid Email/Password", "login")
+        return redirect("/")
+    
+    # Store the user ID in the session
+    session["user_id"] = user_in_db.id
+    print('User ID set in session:', session['user_id'])  # Debug statement
+    
+    return redirect("/dashboard")
+
+@app.route("/dashboard")
+def dash():
+    if "user_id" not in session:
+        return redirect("/")
+    
+    data = {"id": session["user_id"]}
+    current_user = User.get_by_id(data)
+    
+    # Get all posts
+    posts = Post.get_all_with_users()
+    
+    return render_template("dashboard.html", username=current_user.first_name, posts=posts)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")

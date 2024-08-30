@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Reggae+One&family=Source+Sans+Pro&family=Oleo+Script&family=Dela+Gothic+One&family=Atma&display=swap");
+
+/* ----- RESET ----- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  background-color: #e2efff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body,
+select,
+option,
+button {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "Dela Gothic One", cursive;
+  font-size: 2rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0;
+  border-radius: 2.7rem 2.7rem 0 0;
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  max-width: 480px;
+  padding: 2.8rem;
+  margin-bottom: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.7rem;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-1rem);
+  backdrop-filter: blur(1.5rem);
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.item figure {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.item figure img {
+  height: 320px;
+  display: block;
+}
+
+.item input,
+.item select,
+.item button {
+  border-radius: 0.75rem;
+}
+
+.item button {
+  width: 100%;
+  color: #d99904;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 -1px #ffc233;
+  background-image: linear-gradient(#ffe46e 0%, #ffd936 30% 80%, #ffcd19 100%);
+  padding: 1.4rem;
+  border: solid 1px #c98d00;
+  outline: none;
+  border-radius: 2.5rem / 50%;
+  transition: filter 500ms ease-out;
+}
+
+.item button:hover {
+  filter: brightness(90%);
+}
+
+.item button:active {
+  filter: brightness(80%);
+}
+
+select {
+  padding: 0.8rem 1.2rem;
+  border: solid 1px #efefef;
+  margin-bottom: 1.2rem;
+  outline: none;
+  border-radius: 0.75rem;
+  transition: box-shadow 200ms ease-out;
+}
+
+select:focus,
+select:active {
+  box-shadow: 0 0 0 0.25rem rgba(43, 153, 255, 0.5);
+}
+
+label {
+  margin-bottom: 0.7rem;
+}
+
+a.btn-warning {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

@@ -4,160 +4,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='goalsettingstlye.css') }}">
   <title>Goal Setting</title>
   <style>
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-
-    .card {
-      width: 45%;
-      margin: 10px;
-      position: relative;
-    }
-
-    .card-img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    .card-img-overlay {
-      color: #fff;
+    .create-plan-btn {
+      position: absolute;
+      top: 50px;
+      right: -280px;
     }
   </style>
 </head>
 
-<body>
-  <header>
-    <div class="d-flex justify-content-between align-items-center">
-      <h1>My Fitness Journey</h1>
-      <div class="banner">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/dashboard" onclick="setActive(this)">Activity
-                  Feed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/goalsetting" onclick="setActive(this)">Goal Setting</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/plans" onclick="setActive(this)">Conversation</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/friends" onclick="setActive(this)">Friends</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/progress" onclick="setActive(this)">Progress</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+<body class="light-mode">
+  <header class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/dashboard">
+        <div class="twelve">
+          <h1>My Fitness Journey</h1>
+        </div>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard"><i class="fas fa-stream"></i> Activity Feed</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/goalsetting"><i class="fas fa-bullseye"></i> Goal Setting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/friends"><i class="fas fa-user-plus"></i> Add Friend</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/plans"><i class="fas fa-calendar-alt"></i> Plans</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/progress"><i class="fas fa-chart-line"></i> Progress</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/trackprogress"><i class="fas fa-tasks"></i> Track Progress</a>
+          </li>
+        </ul>
       </div>
-      <div class="search-bar">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success me-2" type="submit">Search</button>
-        <button class="btn btn-outline-danger" type="submit">Logout</button>
+      <div class="d-flex align-items-center">
+        <a href="/logout" class="btn btn-outline-danger rounded-pill">Logout</a>
+        <!-- Dark/Light Mode Toggle -->
+        <button class="btn btn-outline-secondary rounded-pill ms-2" onclick="toggleMode()">Toggle Mode</button>
       </div>
     </div>
   </header>
 
   <main>
+    <h1 class>Set Your Goal</h1>
+    <h6>.</h6>
+    <header>
+      <h5 class="text-center">Set A Personal Goal</h5>
+    </header>
     <div class="container">
-      <!-- Card 1: Running -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Running') }}">
-          <img src="../static/Running.jpg" class="card-img" alt="Running">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Running</h5>
-            <p class="card-text">Set your running goals.</p>
-          </div>
-        </a>
-      </div>
       
-
-      <!-- Card 2: Cycling -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Cycling') }}">
+      <!-- Running -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Running', img_url=url_for('static', filename='Running.jpg')) }}">
+        <figure style="--c:#fff5">
+          <img src="../static/Running.jpg" class="card-img" alt="Running">
+          <figcaption>Running</figcaption>
+        </figure>
+      </a>
+      
+      <!-- Cycling -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Cycling', img_url=url_for('static', filename='Cycling.jpg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Cycling.jpg" class="card-img" alt="Cycling">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Cycling</h5>
-            <p class="card-text">Set your cycling goals.</p>
-          </div>
-        </a>
-      </div>
-        
+          <figcaption>Cycling</figcaption>
+        </figure>
+      </a>
 
-      <!-- Card 3: Gym -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Gym') }}">
+      <!-- Gym -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Gym', img_url=url_for('static', filename='Gym.jpg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Gym.jpg" class="card-img" alt="Gym">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Gym</h5>
-            <p class="card-text">Set your gym goals.</p>
-          </div>
-        </a>
-      </div>
+          <figcaption>Gym</figcaption>
+        </figure>
+      </a>
 
-      <!-- Card 4: Hiking -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Gym') }}">
+      <!-- Hiking -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Hiking', img_url=url_for('static', filename='Hiking.jpg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Hiking.jpg" class="card-img" alt="Hiking">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Hiking</h5>
-            <p class="card-text">Set your hiking goals.</p>
-          </div>
-        </a>
-      </div>
+          <figcaption>Hiking</figcaption>
+        </figure>
+      </a>
 
-      <!-- Card 5: Yoga -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Yoga') }}">
+      <!-- Yoga -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Yoga', img_url=url_for('static', filename='Yoga.jpg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Yoga.jpg" class="card-img" alt="Yoga">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Yoga</h5>
-            <p class="card-text">Set your yoga goals.</p>
-          </div>
-        </a>
-      </div>
+          <figcaption>Yoga</figcaption>
+        </figure>
+      </a>
 
-      <!-- Card 6: Rowing -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Rowing') }}">
+      <!-- Rowing -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Rowing', img_url=url_for('static', filename='Rowing.jpg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Rowing.jpg" class="card-img" alt="Rowing">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Rowing</h5>
-            <p class="card-text">Set your rowing goals.</p>
-          </div>
-        </a>
-      </div>
-      <!-- Card 7: Walking -->
-      <div class="card text-bg-dark">
-        <a href="{{ url_for('goalsetting_new', goal_type='Walking') }}">
+          <figcaption>Rowing</figcaption>
+        </figure>
+      </a>
+
+      <!-- Walking -->
+      <a href="{{ url_for('goalsetting_new', goal_type='Walking', img_url=url_for('static', filename='Walking.jpeg')) }}">
+        <figure style="--c:#fff5">
           <img src="../static/Walking.jpeg" class="card-img" alt="Walking">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Walking</h5>
-            <p class="card-text">Set your walking goals.</p>
-          </div>
-        </a>
-      </div>
-     <!-- Offcanvas for Running -->
+          <figcaption>Walking</figcaption>
+        </figure>
+      </a>
+      
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function setActive(element) {
-      var items = document.getElementsByClassName("nav-link");
-      for (var i = 0; i < items.length; i++) {
-        items[i].classList.remove("active");
-      }
-      element.classList.add("active");
+    function toggleMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('navbar-dark');
+      navbar.classList.toggle('navbar-light');
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.classList.toggle('dark-mode');
+        link.classList.toggle('light-mode');
+      });
     }
   </script>
 </body>
